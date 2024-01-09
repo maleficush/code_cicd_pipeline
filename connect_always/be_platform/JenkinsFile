@@ -6,16 +6,20 @@ pipeline {
         stage('init') {
             steps() {
                 echo 'init'
-                switch(env.PROFILE) {
-                    case 'ch-stg':
-                        git_repo = 'dev@def.com'
-                        break
-                    case 'ca-dev':
-                        git_repo = 'uat@def.com'
-                        break
-                    default:
-                        error('Unexpected branch name')
+
+                script {
+                    switch(env.PROFILE) {
+                        case 'ch-stg':
+                            git_repo = 'dev@def.com'
+                            break
+                        case 'ca-dev':
+                            git_repo = 'uat@def.com'
+                            break
+                        default:
+                            error('Unexpected branch name')
+                    }
                 }
+
                 echo git_repo
             }
         }
