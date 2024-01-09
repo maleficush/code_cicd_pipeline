@@ -38,9 +38,18 @@ pipeline {
         stage('Configure App profile config') {
             steps {
                 echo 'Testing..'
-                echo pwd
-
-                echo ls -al
+                script {
+                    switch(env.PROFILE) {
+                        case 'ch-stg':
+                            sh "cp ./src/main/resources/application-ch-stg.yml ./src/main/resources/application.yml"
+                            break
+                        case 'ca-dev':
+                            sh "cp ./src/main/resources/application-ca-dev.yml ./src/main/resources/application.yml"
+                            break
+                        default:
+                            error('Unexpected branch name')
+                    }
+                }
 
             }
         }
