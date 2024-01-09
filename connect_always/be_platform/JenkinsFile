@@ -37,9 +37,8 @@ pipeline {
             steps {
                 echo 'Testing..'
                 echo pwd
-                pwd
+
                 echo ls -al
-                echo ll
 
             }
         }
