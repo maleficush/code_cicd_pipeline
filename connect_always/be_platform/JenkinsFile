@@ -2,6 +2,24 @@ pipeline {
     agent any
 
     stages() {
+        def git_repo = null
+        stage('init') {
+            steps() {
+                echo 'init'
+                switch(env.PROFILE) {
+                    case 'ch-stg':
+                        git_repo = 'dev@def.com'
+                        break
+                    case 'ca-dev':
+                        git_repo = 'uat@def.com'
+                        break
+                    default:
+                        error('Unexpected branch name')
+                }
+                echo git_repo
+            }
+        }
+
         stage('git clone') {
             steps() {
                 git 'https://github.com/leeseok0916/jenkinsTest.git'
@@ -12,6 +30,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 echo env.PROFILE
+
             }
         }
 
