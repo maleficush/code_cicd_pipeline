@@ -12,7 +12,7 @@ pipeline {
                 script {
                     switch(env.PROFILE) {
                         case 'ch-stg':
-                            git_repo = 'abc'
+                            git_repo = 'https://github.com/codeclick-company/codeclick_connectalways_be.git'
                             break
                         case 'ca-dev':
                             git_repo = 'def'
@@ -28,7 +28,7 @@ pipeline {
 
         stage('git clone') {
             steps() {
-                git 'https://github.com/leeseok0916/jenkinsTest.git'
+                git git_repo
             }
         }
 
