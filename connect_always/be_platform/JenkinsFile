@@ -29,6 +29,8 @@ pipeline {
         stage('Source clone') {
             steps() {
                 echo 'Source clone'
+                echo git_repo
+                echo $git_repo
                 git clone git_repo
             }
         }
