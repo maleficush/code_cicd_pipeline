@@ -1,8 +1,10 @@
 pipeline {
     agent any
+    environment {
+        git_repo = ""
+    }
 
     stages() {
-        def git_repo = null
         stage('init') {
             steps() {
                 echo 'init'
@@ -10,10 +12,10 @@ pipeline {
                 script {
                     switch(env.PROFILE) {
                         case 'ch-stg':
-                            git_repo = 'dev@def.com'
+                            git_repo = 'abc'
                             break
                         case 'ca-dev':
-                            git_repo = 'uat@def.com'
+                            git_repo = 'def'
                             break
                         default:
                             error('Unexpected branch name')
