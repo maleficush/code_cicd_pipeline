@@ -30,7 +30,7 @@ pipeline {
             steps() {
                 echo 'Source clone'
                 script {
-                    git clone git_repo
+                    git clone 'https://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@github.com/codeclick-company/codeclick_connectalways_be.git'
                 }
             }
         }
