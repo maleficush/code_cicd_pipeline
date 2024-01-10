@@ -12,7 +12,7 @@ pipeline {
 
 
                 script {
-                    BRANCH_NAME = env.BRANCH
+                    BRANCH_NAME = env.BRANCH_NAME
 
                     switch(env.PROFILE) {
                         case 'ch-stg':
@@ -25,7 +25,7 @@ pipeline {
                             error('Unexpected branch name')
                     }
                 }
-
+                echo BRANCH_NAME
                 echo GIT_REPO
             }
         }
