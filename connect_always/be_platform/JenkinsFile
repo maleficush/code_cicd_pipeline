@@ -9,9 +9,11 @@ pipeline {
         stage('init') {
             steps() {
                 echo 'init'
-                BRANCH_NAME = env.BRANCH
+
 
                 script {
+                    BRANCH_NAME = env.BRANCH
+
                     switch(env.PROFILE) {
                         case 'ch-stg':
                             GIT_REPO = 'https://github.com/codeclick-company/codeclick_connectalways_be.git'
