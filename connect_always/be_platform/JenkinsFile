@@ -25,6 +25,8 @@ pipeline {
                             error('Unexpected branch name')
                     }
                 }
+                echo env.BRANCH_NAME
+                echo env.PROFILE
                 echo BRANCH_NAME
                 echo GIT_REPO
             }
