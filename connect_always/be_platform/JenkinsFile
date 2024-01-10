@@ -2,14 +2,14 @@ pipeline {
     agent any
     environment {
         GIT_REPO = ""
-        BRANCH_NAME = env.BRANCH
+        BRANCH_NAME = ""
     }
 
     stages() {
         stage('init') {
             steps() {
                 echo 'init'
-                sh 'printenv'
+                BRANCH_NAME = env.BRANCH
 
                 script {
                     switch(env.PROFILE) {
