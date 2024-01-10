@@ -1,7 +1,8 @@
 pipeline {
     agent any
     environment {
-        git_repo = ""
+        GIT_REPO = ""
+        BRANCH_NAME = env.BRANCH
     }
 
     stages() {
@@ -13,23 +14,23 @@ pipeline {
                 script {
                     switch(env.PROFILE) {
                         case 'ch-stg':
-                            git_repo = 'https://${env.CL_REPO_TOKEN}@github.com/codeclick-company/codeclick_connectalways_be.git'
+                            GIT_REPO = 'https://github.com/codeclick-company/codeclick_connectalways_be.git'
                             break
                         case 'ca-dev':
-                            git_repo = 'https://${env.CL_REPO_TOKEN}@github.com/codeclick-company/codeclick_connectalways_be.git'
+                            GIT_REPO = 'https://github.com/codeclick-company/codeclick_connectalways_be.git'
                             break
                         default:
                             error('Unexpected branch name')
                     }
                 }
 
-                echo git_repo
+                echo GIT_REPO
             }
         }
 
         stage('Chekcout') {
             steps() {
-                git credentialsId: 'CL_REPO_CREDENTIAL', url: 'https://github.com/codeclick-company/codeclick_connectalways_be.git'
+                git branch: BRANCH_NAME, credentialsId: 'CL_REPO_CREDENTIAL', url: GIT_REPO
                 echo 'Chekcout'
             }
         }
