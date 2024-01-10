@@ -31,6 +31,8 @@ pipeline {
             steps() {
                 echo 'Chekcout'
                 script {
+                    echo ${env.CL_REPO_TOKEN}
+                    echo 'https://${env.CL_REPO_TOKEN}@github.com/codeclick-company/codeclick_connectalways_be.git'
                     git clone 'https://${env.CL_REPO_TOKEN}@github.com/codeclick-company/codeclick_connectalways_be.git'
                 }
             }
