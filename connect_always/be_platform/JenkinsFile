@@ -28,7 +28,7 @@ pipeline {
 
         stage('Chekcout') {
             steps() {
-                echo 'Chekcout
+                echo 'Chekcout'
                 script {
                     git clone 'https://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@github.com/codeclick-company/codeclick_connectalways_be.git'
                 }
