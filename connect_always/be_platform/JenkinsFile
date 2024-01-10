@@ -25,19 +25,14 @@ pipeline {
                             error('Unexpected branch name')
                     }
                 }
-                echo $BRANCH_NAME
-                echo ${BRANCH_NAME}
-                echo env.PROFILE
-                echo $PROFILE
-
-                echo BRANCH_NAME
+                echo "${BRANCH_NAME}"
                 echo GIT_REPO
             }
         }
 
         stage('Chekcout') {
             steps() {
-                git branch: BRANCH_NAME, credentialsId: 'CL_REPO_CREDENTIAL', url: GIT_REPO
+                git branch: "${BRANCH_NAME}", credentialsId: 'CL_REPO_CREDENTIAL', url: GIT_REPO
                 echo 'Chekcout'
             }
         }
