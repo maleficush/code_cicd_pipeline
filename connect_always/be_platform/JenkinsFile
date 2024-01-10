@@ -8,6 +8,7 @@ pipeline {
         stage('init') {
             steps() {
                 echo 'init'
+                sh 'printenv'
 
                 script {
                     switch(env.PROFILE) {
