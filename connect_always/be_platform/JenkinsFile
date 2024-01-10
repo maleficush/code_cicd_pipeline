@@ -12,10 +12,10 @@ pipeline {
                 script {
                     switch(env.PROFILE) {
                         case 'ch-stg':
-                            git_repo = 'https://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@github.com/codeclick-company/codeclick_connectalways_be.git'
+                            git_repo = 'https://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@github.com/codeclick-company/codeclick_connectalways_be.git'
                             break
                         case 'ca-dev':
-                            git_repo = 'https://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@github.com/codeclick-company/codeclick_connectalways_be.git'
+                            git_repo = 'https://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@github.com/codeclick-company/codeclick_connectalways_be.git'
                             break
                         default:
                             error('Unexpected branch name')
@@ -30,7 +30,7 @@ pipeline {
             steps() {
                 echo 'Chekcout'
                 script {
-                    git clone 'https://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@github.com/codeclick-company/codeclick_connectalways_be.git'
+                    git clone 'https://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@github.com/codeclick-company/codeclick_connectalways_be.git'
                 }
             }
         }
