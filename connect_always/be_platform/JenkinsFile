@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         GIT_REPO = ""
-        BRANCH_NAME = ""
+        BRANCH_NAME = "${BRANCH}"
     }
 
     stages() {
@@ -12,7 +12,6 @@ pipeline {
 
 
                 script {
-                    BRANCH_NAME = env.BRANCH_NAME
 
                     switch(env.PROFILE) {
                         case 'ch-stg':
@@ -25,14 +24,14 @@ pipeline {
                             error('Unexpected branch name')
                     }
                 }
-                echo "${BRANCH}"
                 echo GIT_REPO
+                echo BRANCH_NAME
             }
         }
 
         stage('Chekcout') {
             steps() {
-                git branch: "${BRANCH}", credentialsId: 'CL_REPO_CREDENTIAL', url: GIT_REPO
+                git branch: BRANCH_NAME, credentialsId: 'CL_REPO_CREDENTIAL', url: GIT_REPO
                 echo 'Chekcout'
             }
         }
