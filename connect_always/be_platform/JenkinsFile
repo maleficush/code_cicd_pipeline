@@ -29,12 +29,8 @@ pipeline {
 
         stage('Chekcout') {
             steps() {
+                git credentialsId: 'CL_REPO_CREDENTIAL', url: 'https://github.com/codeclick-company/codeclick_connectalways_be.git'
                 echo 'Chekcout'
-                script {
-                    echo env.CL_REPO_TOKEN
-                    echo 'https://${env.CL_REPO_TOKEN}@github.com/codeclick-company/codeclick_connectalways_be.git'
-                    git clone 'https://${env.CL_REPO_TOKEN}@github.com/codeclick-company/codeclick_connectalways_be.git'
-                }
             }
         }
 
