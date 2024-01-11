@@ -33,7 +33,7 @@ pipeline {
             steps() {
                 sh 'pwd'
                 sh 'ls -la'
-                git branch: BRANCH_NAME, credentialsId: 'CL_REPO_CREDENTIAL', url: GIT_REPO
+                git branch: 'develop', credentialsId: 'CL_REPO_CREDENTIAL', url: GIT_REPO
                 echo 'Chekcout'
             }
         }
