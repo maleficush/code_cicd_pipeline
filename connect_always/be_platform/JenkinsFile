@@ -33,9 +33,7 @@ pipeline {
             steps() {
                 sh 'pwd'
                 sh 'ls -la'
-                git branch: 'develop',
-                    credentialsId: 'CL_REPO_CREDENTIAL',
-                    url: GIT_REPO
+                checkout scm: [$class: 'GitSCM', branches: [[name: '*/develop']], userRemoteConfigs: [[credentialsId: 'CL_REPO_CREDENTIAL', url: GIT_REPO]]]
                 echo 'Chekcout'
             }
         }
