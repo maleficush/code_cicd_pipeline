@@ -15,10 +15,10 @@ pipeline {
 
                     switch(env.PROFILE) {
                         case 'ch-stg':
-                            GIT_REPO = 'https://github.com/codeclick-company/codeclick_connectalways_be.git'
+                            GIT_REPO = 'ssh://git@github.com:codeclick-company/codeclick_connectalways_be.git'
                             break
                         case 'ca-dev':
-                            GIT_REPO = 'https://github.com/codeclick-company/codeclick_connectalways_be.git'
+                            GIT_REPO = 'ssh://git@github.com:codeclick-company/codeclick_connectalways_be.git'
                             break
                         default:
                             error('Unexpected branch name')
@@ -33,7 +33,9 @@ pipeline {
             steps() {
                 sh 'pwd'
                 sh 'ls -la'
-                git branch: 'develop', credentialsId: 'CL_REPO_CREDENTIAL', url: GIT_REPO
+                git branch: 'develop',
+                    credentialsId: 'CL_REPO_CREDENTIAL',
+                    url: GIT_REPO
                 echo 'Chekcout'
             }
         }
